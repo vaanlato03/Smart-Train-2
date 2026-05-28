@@ -1,5 +1,7 @@
 package cl.unab.ptec102.smarttrain.backend;
 
+import cl.unab.ptec102.smarttrain.frontend.Estilos;
+
 import java.util.ArrayList;
 
 public class Rutina {
@@ -30,7 +32,6 @@ public class Rutina {
         };
     }
 
-    // Métodos
     public void agregarEjercicio(Ejercicio e) {
         this.ejercicios.add(e);
     }
@@ -64,17 +65,26 @@ public class Rutina {
     }
 
     public String mostrarRutina() {
-        String mostrar = "=============================================\n"
-                + "RUTINA DEL CLIENTE: " + this.cliente + "\n"
-                + "NIVEL DE INTENSIDAD: " + this.nivelIntensidad + "\n"
-                + "TIEMPO TOTAL: " + this.calcularTiempoTotal() + "\n"
-                + "EJERCICIOS:\n";
+        StringBuilder sb = new StringBuilder();
+        sb.append(Estilos.lineaDecorativa);
+        sb.append("          RUTINA DE ENTRENAMIENTO\n");
+        sb.append(Estilos.lineaDecorativa);
+        sb.append("Cliente: ").append(this.cliente).append("\n");
+        sb.append("Intensidad: ").append(this.getNivelString()).append("\n");
+        sb.append("Tiempo: ").append(this.calcularTiempoTotal()).append(" minutos").append("\n");
+        sb.append("Ejercicios: ").append(this.ejercicios.size()).append("\n");
+        sb.append(Estilos.lineaDecorativa);
+        sb.append("\n");
 
+        int i = 1;
         for (Ejercicio e : this.ejercicios) {
-            mostrar += "- " + e.getNombre() + " | Codigo: " + e.getCodigo() + " | Tipo: " + e.getTipo() + "\n";
+            sb.append(i++).append(". ").append(e.getNombre()).append("\n");
+            sb.append(e.mostrarInfo()).append("\n");
         }
-        mostrar += ("=============================================");
+        sb.append(Estilos.lineaDecorativa);
+        sb.append("          GENERADO POR SMARTTRAIN\n");
+        sb.append(Estilos.lineaDecorativa);
 
-        return mostrar;
+        return sb.toString();
     }
 }

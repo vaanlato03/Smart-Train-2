@@ -23,7 +23,8 @@ public class GestorRutinas {
     public Rutina getRutinaActual() { return this.rutinaActual; }
     public String getCliente() { return this.cliente; }
     public int getNumEjercicios() { return this.ejercicios.size(); }
-    public int getTiempoTotal() {
+
+    public int calcularTiempoTotal() {
         int tiempoTotal = 0;
         for (Ejercicio e : this.ejercicios) {
             tiempoTotal += e.getTiempoMinutos();
@@ -61,7 +62,6 @@ public class GestorRutinas {
         return contador;
     }
 
-    // Agregar un ejercicio a la lista
     public void agregarEjercicio(int cod, String nom, int tipo, int inten, int semana, int tiempo, String desc) {
         Ejercicio nuevo;
         if (tipo == 1) {
@@ -72,13 +72,25 @@ public class GestorRutinas {
         this.ejercicios.add(nuevo);
     }
 
-    // Carga
     public int cargarEjercicios() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("Ejercicios400.csv"));
 
             String linea = reader.readLine();
+            boolean esEncabezado = true;
+
             while (linea != null) {
+                // Se salta el encabezado si es que hay.
+                if(esEncabezado) {
+                    String[] primerosDatos = linea.split(",");
+                    if(primerosDatos.length > 0 && !primerosDatos[0].matches("\\d+")) {
+                        esEncabezado = false;
+                        linea = reader.readLine();
+                        continue;
+                    }
+                    esEncabezado = false;
+                }
+
                 String[] datos = linea.split(",");
                 this.agregarEjercicio(
                         Integer.parseInt(datos[0]),
@@ -101,7 +113,6 @@ public class GestorRutinas {
         }
     }
 
-    // Genera rutina
     public boolean generarRutina(int cantFuerza, int cantCardio, int intensidad) {
         try {
             ArrayList<Ejercicio> candidatosFuerza = new ArrayList<>();
@@ -133,14 +144,12 @@ public class GestorRutinas {
             Rutina nuevaRutina = new Rutina(this.cliente, intensidad);
             Random rnd = new Random();
 
-            // Selección aleatoria sin repetir para Fuerza
             for (int i = 0; i < cantFuerza; i++) {
                 int index = rnd.nextInt(candidatosFuerza.size());
                 nuevaRutina.agregarEjercicio(candidatosFuerza.get(index));
                 candidatosFuerza.remove(index);
             }
 
-            // Selección aleatoria sin repetir para Cardio
             for (int i = 0; i < cantCardio; i++) {
                 int index = rnd.nextInt(candidatosCardio.size());
                 nuevaRutina.agregarEjercicio(candidatosCardio.get(index));
@@ -155,7 +164,6 @@ public class GestorRutinas {
         }
     }
 
-    // Exporta la rutina a un archivo TXT
     public boolean descargarRutina(Rutina rutina, JFrame ventana) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setSelectedFile(new File("rutina_" + rutina.getCliente() + ".txt"));
@@ -166,27 +174,7 @@ public class GestorRutinas {
                 BufferedWriter writer = new BufferedWriter(
                         new FileWriter(fileChooser.getSelectedFile()));
 
-                writer.write("=".repeat(50) + "\n");
-                writer.write("          RUTINA DE ENTRENAMIENTO\n");
-                writer.write("=".repeat(50) + "\n");
-                writer.write("Cliente: " + rutina.getCliente() + "\n");
-                writer.write("Intensidad: " + rutina.getNivelString() + "\n");
-                writer.write("Tiempo: " + rutina.calcularTiempoTotal() + " minutos\n");
-                writer.write("Ejercicios: " + rutina.getEjercicios().size() + "\n");
-                writer.write("=".repeat(50) + "\n\n");
-
-                int i = 0;
-                for (Ejercicio e : rutina.getEjercicios()) {
-                    writer.write((i++) + ". " + e.getNombre() + "\n");
-                    writer.write("   Tipo        : " + e.getTipoString() + "\n");
-                    writer.write("   Intensidad  : " + e.getIntensidadString() + "\n");
-                    writer.write("   Tiempo      : " + e.getTiempoMinutos() + " min\n");
-                    writer.write("   Descripcion : " + e.getDescripcion() + "\n\n");
-                }
-
-                writer.write("=".repeat(50) + "\n");
-                writer.write("           GENERADO POR SMARTTRAIN\n");
-                writer.write("=".repeat(50) + "\n");
+                writer.write(rutina.mostrarRutina());
 
                 writer.close();
                 return true;
