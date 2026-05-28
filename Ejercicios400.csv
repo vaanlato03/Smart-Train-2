@@ -1,7 +1,18 @@
+codigo,nombre,tipo,intensidad,ultimaSemana,tiempoMinutos,descripcion
 1,Sentadilla A1,1,1,2,15,Flexion de piernas suave
 2,Sentadilla A2,1,1,2,15,Flexion de piernas suave
 3,Sentadilla A3,1,1,1,15,Flexion de piernas suave
 4,Sentadilla A4,1,1,2,15,Flexion de piernas suave
+5,Sentadilla A5,1,1,2,15,Flexion de piernas suave
+6,Sentadilla B1,1,2,2,20,Flexion de piernas media
+7,Sentadilla B2,1,2,2,20,Flexion de piernas media
+8,Sentadilla B3,1,2,1,20,Flexion de piernas media
+9,Sentadilla B4,1,2,2,20,Flexion de piernas media
+10,Sentadilla B5,1,2,2,20,Flexion de piernas media
+11,Sentadilla C1,1,3,2,25,Flexion de piernas fuerte
+12,Sentadilla C2,1,3,2,25,Flexion de piernas fuerte
+13,Sentadilla C3,1,3,1,25,Flexion de piernas fuerte
+14,Sentadilla C4,1,3,2,25,Flexion de piernas fuerte
 15,Sentadilla C5,1,3,2,25,Flexion de piernas fuerte
 16,Sentadilla D1,1,4,2,30,Flexion de piernas extrema
 17,Sentadilla D2,1,4,2,30,Flexion de piernas extrema
@@ -21,6 +32,11 @@
 31,Press Pecho C1,1,3,2,25,Empuje horizontal fuerte
 32,Press Pecho C2,1,3,2,25,Empuje horizontal fuerte
 33,Press Pecho C3,1,3,1,25,Empuje horizontal fuerte
+34,Press Pecho C4,1,3,2,25,Empuje horizontal fuerte
+35,Press Pecho C5,1,3,2,25,Empuje horizontal fuerte
+36,Press Pecho D1,1,4,2,30,Empuje horizontal extremo
+37,Press Pecho D2,1,4,2,30,Empuje horizontal extremo
+38,Press Pecho D3,1,4,1,30,Empuje horizontal extremo
 39,Press Pecho D4,1,4,2,30,Empuje horizontal extremo
 40,Press Pecho D5,1,4,2,30,Empuje horizontal extremo
 41,Remo Espalda A1,1,1,2,15,Traccion suave
@@ -45,6 +61,20 @@
 60,Remo Espalda D5,1,4,2,30,Traccion extrema
 61,Peso Muerto A1,1,1,2,15,Levantamiento suave
 62,Peso Muerto A2,1,1,2,15,Levantamiento suave
+63,Peso Muerto A3,1,1,1,15,Levantamiento suave
+64,Peso Muerto A4,1,1,2,15,Levantamiento suave
+65,Peso Muerto A5,1,1,2,15,Levantamiento suave
+66,Peso Muerto B1,1,2,2,20,Levantamiento medio
+67,Peso Muerto B2,1,2,2,20,Levantamiento medio
+68,Peso Muerto B3,1,2,1,20,Levantamiento medio
+69,Peso Muerto B4,1,2,2,20,Levantamiento medio
+70,Peso Muerto B5,1,2,2,20,Levantamiento medio
+71,Peso Muerto C1,1,3,2,25,Levantamiento fuerte
+72,Peso Muerto C2,1,3,2,25,Levantamiento fuerte
+73,Peso Muerto C3,1,3,1,25,Levantamiento fuerte
+74,Peso Muerto C4,1,3,2,25,Levantamiento fuerte
+75,Peso Muerto C5,1,3,2,25,Levantamiento fuerte
+76,Peso Muerto D1,1,4,2,30,Levantamiento extremo
 77,Peso Muerto D2,1,4,2,30,Levantamiento extremo
 78,Peso Muerto D3,1,4,1,30,Levantamiento extremo
 79,Peso Muerto D4,1,4,2,30,Levantamiento extremo
@@ -66,6 +96,13 @@
 95,Press Militar C5,1,3,2,25,Empuje hombros fuerte
 96,Press Militar D1,1,4,2,30,Empuje hombros extremo
 97,Press Militar D2,1,4,2,30,Empuje hombros extremo
+98,Press Militar D3,1,4,1,30,Empuje hombros extremo
+99,Press Militar D4,1,4,2,30,Empuje hombros extremo
+100,Press Militar D5,1,4,2,30,Empuje hombros extremo
+101,Dominadas A1,1,1,2,15,Traccion vertical suave
+102,Dominadas A2,1,1,2,15,Traccion vertical suave
+103,Dominadas A3,1,1,1,15,Traccion vertical suave
+104,Dominadas A4,1,1,2,15,Traccion vertical suave
 105,Dominadas A5,1,1,2,15,Traccion vertical suave
 106,Dominadas B1,1,2,2,20,Traccion vertical media
 107,Dominadas B2,1,2,2,20,Traccion vertical media
@@ -121,6 +158,15 @@
 157,Curl Biceps D2,1,4,2,30,Flexion brazos extrema
 158,Curl Biceps D3,1,4,1,30,Flexion brazos extrema
 159,Curl Biceps D4,1,4,2,30,Flexion brazos extrema
+160,Curl Biceps D5,1,4,2,30,Flexion brazos extrema
+161,Press Frances A1,1,1,2,15,Extension brazos suave
+162,Press Frances A2,1,1,2,15,Extension brazos suave
+163,Press Frances A3,1,1,1,15,Extension brazos suave
+164,Press Frances A4,1,1,2,15,Extension brazos suave
+165,Press Frances A5,1,1,2,15,Extension brazos suave
+166,Press Frances B1,1,2,2,20,Extension brazos media
+167,Press Frances B2,1,2,2,20,Extension brazos media
+168,Press Frances B3,1,2,1,20,Extension brazos media
 169,Press Frances B4,1,2,2,20,Extension brazos media
 170,Press Frances B5,1,2,2,20,Extension brazos media
 171,Press Frances C1,1,3,2,25,Extension brazos fuerte
@@ -153,6 +199,11 @@
 198,Plancha Core D3,1,4,1,30,Abdomen isometrico extremo
 199,Plancha Core D4,1,4,2,30,Abdomen isometrico extremo
 200,Plancha Core D5,1,4,2,30,Abdomen isometrico extremo
+201,Trote Cinta A1,2,1,2,30,Cardio maquina suave
+202,Trote Cinta A2,2,1,2,30,Cardio maquina suave
+203,Trote Cinta A3,2,1,1,30,Cardio maquina suave
+204,Trote Cinta A4,2,1,2,30,Cardio maquina suave
+205,Trote Cinta A5,2,1,2,30,Cardio maquina suave
 206,Trote Cinta B1,2,2,2,40,Cardio maquina medio
 207,Trote Cinta B2,2,2,2,40,Cardio maquina medio
 208,Trote Cinta B3,2,2,1,40,Cardio maquina medio
@@ -161,6 +212,7 @@
 211,Trote Cinta C1,2,3,2,45,Cardio maquina fuerte
 212,Trote Cinta C2,2,3,2,45,Cardio maquina fuerte
 213,Trote Cinta C3,2,3,1,45,Cardio maquina fuerte
+214,Trote Cinta C4,2,3,2,45,Cardio maquina fuerte
 215,Trote Cinta C5,2,3,2,45,Cardio maquina fuerte
 216,Trote Cinta D1,2,4,2,20,Cardio maquina extremo
 217,Trote Cinta D2,2,4,2,20,Cardio maquina extremo
@@ -172,6 +224,8 @@
 223,Bici Estatica A3,2,1,1,30,Pedaleo indoor suave
 224,Bici Estatica A4,2,1,2,30,Pedaleo indoor suave
 225,Bici Estatica A5,2,1,2,30,Pedaleo indoor suave
+226,Bici Estatica B1,2,2,2,40,Pedaleo indoor medio
+227,Bici Estatica B2,2,2,2,40,Pedaleo indoor medio
 228,Bici Estatica B3,2,2,1,40,Pedaleo indoor medio
 229,Bici Estatica B4,2,2,2,40,Pedaleo indoor medio
 230,Bici Estatica B5,2,2,2,40,Pedaleo indoor medio
@@ -182,6 +236,11 @@
 235,Bici Estatica C5,2,3,2,45,Pedaleo indoor fuerte
 236,Bici Estatica D1,2,4,2,20,Pedaleo indoor extremo
 237,Bici Estatica D2,2,4,2,20,Pedaleo indoor extremo
+238,Bici Estatica D3,2,4,1,20,Pedaleo indoor extremo
+239,Bici Estatica D4,2,4,2,20,Pedaleo indoor extremo
+240,Bici Estatica D5,2,4,2,20,Pedaleo indoor extremo
+241,Eliptica A1,2,1,2,30,Movimiento cruzado suave
+242,Eliptica A2,2,1,2,30,Movimiento cruzado suave
 243,Eliptica A3,2,1,1,30,Movimiento cruzado suave
 244,Eliptica A4,2,1,2,30,Movimiento cruzado suave
 245,Eliptica A5,2,1,2,30,Movimiento cruzado suave
@@ -212,6 +271,9 @@
 270,Remo Ergometro B5,2,2,2,40,Traccion continua media
 271,Remo Ergometro C1,2,3,2,45,Traccion continua fuerte
 272,Remo Ergometro C2,2,3,2,45,Traccion continua fuerte
+273,Remo Ergometro C3,2,3,1,45,Traccion continua fuerte
+274,Remo Ergometro C4,2,3,2,45,Traccion continua fuerte
+275,Remo Ergometro C5,2,3,2,45,Traccion continua fuerte
 276,Remo Ergometro D1,2,4,2,20,Traccion continua extrema
 277,Remo Ergometro D2,2,4,2,20,Traccion continua extrema
 278,Remo Ergometro D3,2,4,1,20,Traccion continua extrema
@@ -221,23 +283,37 @@
 282,Salto Cuerda A2,2,1,2,30,Saltos basicos suaves
 283,Salto Cuerda A3,2,1,1,30,Saltos basicos suaves
 284,Salto Cuerda A4,2,1,2,30,Saltos basicos suaves
+285,Salto Cuerda A5,2,1,2,30,Saltos basicos suaves
 286,Salto Cuerda B1,2,2,2,40,Saltos basicos medios
 287,Salto Cuerda B2,2,2,2,40,Saltos basicos medios
 288,Salto Cuerda B3,2,2,1,40,Saltos basicos medios
 289,Salto Cuerda B4,2,2,2,40,Saltos basicos medios
+290,Salto Cuerda B5,2,2,2,40,Saltos basicos medios
+291,Salto Cuerda C1,2,3,2,45,Saltos rapidos fuertes
+292,Salto Cuerda C2,2,3,2,45,Saltos rapidos fuertes
+293,Salto Cuerda C3,2,3,1,45,Saltos rapidos fuertes
 294,Salto Cuerda C4,2,3,2,45,Saltos rapidos fuertes
 295,Salto Cuerda C5,2,3,2,45,Saltos rapidos fuertes
 296,Salto Cuerda D1,2,4,2,20,Dobles saltos extremos
 297,Salto Cuerda D2,2,4,2,20,Dobles saltos extremos
+298,Salto Cuerda D3,2,4,1,20,Dobles saltos extremos
 299,Salto Cuerda D4,2,4,2,20,Dobles saltos extremos
 300,Salto Cuerda D5,2,4,2,20,Dobles saltos extremos
 301,Natacion Piscina A1,2,1,2,30,Nado recreativo suave
 302,Natacion Piscina A2,2,1,2,30,Nado recreativo suave
 303,Natacion Piscina A3,2,1,1,30,Nado recreativo suave
+304,Natacion Piscina A4,2,1,2,30,Nado recreativo suave
 305,Natacion Piscina A5,2,1,2,30,Nado recreativo suave
 306,Natacion Piscina B1,2,2,2,40,Nado constante medio
 307,Natacion Piscina B2,2,2,2,40,Nado constante medio
 308,Natacion Piscina B3,2,2,1,40,Nado constante medio
+309,Natacion Piscina B4,2,2,2,40,Nado constante medio
+310,Natacion Piscina B5,2,2,2,40,Nado constante medio
+311,Natacion Piscina C1,2,3,2,45,Nado rapido fuerte
+312,Natacion Piscina C2,2,3,2,45,Nado rapido fuerte
+313,Natacion Piscina C3,2,3,1,45,Nado rapido fuerte
+314,Natacion Piscina C4,2,3,2,45,Nado rapido fuerte
+315,Natacion Piscina C5,2,3,2,45,Nado rapido fuerte
 316,Natacion Piscina D1,2,4,2,20,Nado mariposa extremo
 317,Natacion Piscina D2,2,4,2,20,Nado mariposa extremo
 318,Natacion Piscina D3,2,4,1,20,Nado mariposa extremo
@@ -247,9 +323,17 @@
 322,Burpees A2,2,1,2,30,Agilidad cuerpo suave
 323,Burpees A3,2,1,1,30,Agilidad cuerpo suave
 324,Burpees A4,2,1,2,30,Agilidad cuerpo suave
+325,Burpees A5,2,1,2,30,Agilidad cuerpo suave
 326,Burpees B1,2,2,2,40,Agilidad cuerpo media
 327,Burpees B2,2,2,2,40,Agilidad cuerpo media
 328,Burpees B3,2,2,1,40,Agilidad cuerpo media
+329,Burpees B4,2,2,2,40,Agilidad cuerpo media
+330,Burpees B5,2,2,2,40,Agilidad cuerpo media
+331,Burpees C1,2,3,2,45,Agilidad cuerpo fuerte
+332,Burpees C2,2,3,2,45,Agilidad cuerpo fuerte
+333,Burpees C3,2,3,1,45,Agilidad cuerpo fuerte
+334,Burpees C4,2,3,2,45,Agilidad cuerpo fuerte
+335,Burpees C5,2,3,2,45,Agilidad cuerpo fuerte
 336,Burpees D1,2,4,2,20,Agilidad cuerpo extrema
 337,Burpees D2,2,4,2,20,Agilidad cuerpo extrema
 338,Burpees D3,2,4,1,20,Agilidad cuerpo extrema
@@ -259,34 +343,59 @@
 342,Escaleras A2,2,1,2,30,Subida escalones suave
 343,Escaleras A3,2,1,1,30,Subida escalones suave
 344,Escaleras A4,2,1,2,30,Subida escalones suave
+345,Escaleras A5,2,1,2,30,Subida escalones suave
+346,Escaleras B1,2,2,2,40,Subida escalones media
+347,Escaleras B2,2,2,2,40,Subida escalones media
+348,Escaleras B3,2,2,1,40,Subida escalones media
+349,Escaleras B4,2,2,2,40,Subida escalones media
+350,Escaleras B5,2,2,2,40,Subida escalones media
+351,Escaleras C1,2,3,2,45,Subida escalones fuerte
 352,Escaleras C2,2,3,2,45,Subida escalones fuerte
 353,Escaleras C3,2,3,1,45,Subida escalones fuerte
 354,Escaleras C4,2,3,2,45,Subida escalones fuerte
 355,Escaleras C5,2,3,2,45,Subida escalones fuerte
 356,Escaleras D1,2,4,2,20,Subida escalones extrema
+357,Escaleras D2,2,4,2,20,Subida escalones extrema
+358,Escaleras D3,2,4,1,20,Subida escalones extrema
+359,Escaleras D4,2,4,2,20,Subida escalones extrema
+360,Escaleras D5,2,4,2,20,Subida escalones extrema
 361,Aerobicos A1,2,1,2,30,Movimiento ritmico suave
 362,Aerobicos A2,2,1,2,30,Movimiento ritmico suave
 363,Aerobicos A3,2,1,1,30,Movimiento ritmico suave
 364,Aerobicos A4,2,1,2,30,Movimiento ritmico suave
 365,Aerobicos A5,2,1,2,30,Movimiento ritmico suave
 366,Aerobicos B1,2,2,2,40,Movimiento ritmico medio
+367,Aerobicos B2,2,2,2,40,Movimiento ritmico medio
+368,Aerobicos B3,2,2,1,40,Movimiento ritmico medio
 369,Aerobicos B4,2,2,2,40,Movimiento ritmico medio
 370,Aerobicos B5,2,2,2,40,Movimiento ritmico medio
 371,Aerobicos C1,2,3,2,45,Movimiento ritmico fuerte
 372,Aerobicos C2,2,3,2,45,Movimiento ritmico fuerte
 373,Aerobicos C3,2,3,1,45,Movimiento ritmico fuerte
 374,Aerobicos C4,2,3,2,45,Movimiento ritmico fuerte
+375,Aerobicos C5,2,3,2,45,Movimiento ritmico fuerte
 376,Aerobicos D1,2,4,2,20,Movimiento ritmico extremo
 377,Aerobicos D2,2,4,2,20,Movimiento ritmico extremo
 378,Aerobicos D3,2,4,1,20,Movimiento ritmico extremo
 379,Aerobicos D4,2,4,2,20,Movimiento ritmico extremo
 380,Aerobicos D5,2,4,2,20,Movimiento ritmico extremo
+381,Ciclismo Ruta A1,2,1,2,30,Pedaleo exterior suave
+382,Ciclismo Ruta A2,2,1,2,30,Pedaleo exterior suave
 383,Ciclismo Ruta A3,2,1,1,30,Pedaleo exterior suave
 384,Ciclismo Ruta A4,2,1,2,30,Pedaleo exterior suave
 385,Ciclismo Ruta A5,2,1,2,30,Pedaleo exterior suave
 386,Ciclismo Ruta B1,2,2,2,40,Pedaleo exterior medio
 387,Ciclismo Ruta B2,2,2,2,40,Pedaleo exterior medio
 388,Ciclismo Ruta B3,2,2,1,40,Pedaleo exterior medio
+389,Ciclismo Ruta B4,2,2,2,40,Pedaleo exterior medio
+390,Ciclismo Ruta B5,2,2,2,40,Pedaleo exterior medio
+391,Ciclismo Ruta C1,2,3,2,45,Pedaleo exterior fuerte
+392,Ciclismo Ruta C2,2,3,2,45,Pedaleo exterior fuerte
+393,Ciclismo Ruta C3,2,3,1,45,Pedaleo exterior fuerte
+394,Ciclismo Ruta C4,2,3,2,45,Pedaleo exterior fuerte
+395,Ciclismo Ruta C5,2,3,2,45,Pedaleo exterior fuerte
+396,Ciclismo Ruta D1,2,4,2,20,Pedaleo exterior extremo
 397,Ciclismo Ruta D2,2,4,2,20,Pedaleo exterior extremo
+398,Ciclismo Ruta D3,2,4,1,20,Pedaleo exterior extremo
 399,Ciclismo Ruta D4,2,4,2,20,Pedaleo exterior extremo
 400,Ciclismo Ruta D5,2,4,2,20,Pedaleo exterior extremo
