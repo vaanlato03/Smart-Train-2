@@ -6,17 +6,28 @@ import cl.unab.ptec102.smarttrain.backend.Rutina;
 import javax.swing.*;
 import java.awt.*;
 
+/// Ventana de resumen de la rutina. Muestra las estadísticas de la rutina y da la opción de
+/// descargarla como txt, volver al menú principal o salir del sistema.
 public class VentanaResumen {
+
+    // Atributo para recibir el gestor creado anteriormente.
     private GestorRutinas gestor;
+
+    // Atributo para guardar la rutina y utilizarla más cómodamente.
     private Rutina rutina;
+
+    // Elementos de la ventana
     private JFrame ventanaResumen;
     private JLabel lbFondo, lbCliente, lbResumen, lbCantEjercicios, lbTiempoTotal, lbCantFuerza, lbCantCardio;
     private JLabel lbCantBasico, lbCantInter, lbCantAvanz, lbCantAltoRend;
     private JButton btVolverMenu, btSalir, btGuardar;
 
     public VentanaResumen(GestorRutinas gestor) {
+        // Recibe el gestor y lo almacena en su atributo gestor.
         this.gestor = gestor;
+        // Utiliza el gestor para obtener la rutina y la guarda en su atributo rutina.
         rutina = this.gestor.getRutinaActual();
+        // Inicializa y configura el JFrame.
         ventanaResumen = new JFrame();
         ventanaResumen.setSize(750,500);
         ventanaResumen.setTitle("Resumen de la rutina");
@@ -33,6 +44,7 @@ public class VentanaResumen {
         ventanaResumen.setLocationRelativeTo(null);
     }
 
+    /// Inicializa los componentes que tendrá la ventana y los estiliza.
     public void crearComponentes() {
         lbFondo = new JLabel(Estilos.fondoGimnasio);
         lbFondo.setLayout(new GridBagLayout());
@@ -54,6 +66,7 @@ public class VentanaResumen {
         lbTiempoTotal.setFont(Estilos.fuente.deriveFont(20f));
         lbTiempoTotal.setForeground(Color.WHITE);
 
+        // Utiliza HTML para agregar salto de línea y centrado al texto.
         lbCantFuerza = new JLabel("<html><center>Ejercicios de fuerza:<br>" +
                 rutina.contarPorTipo(1) + "</center></html>");
         lbCantCardio = new JLabel("<html><center>Ejercicios de cardio:<br>" +
@@ -67,6 +80,7 @@ public class VentanaResumen {
         lbCantAltoRend = new JLabel("<html><center>Alto rendimiento:<br>" +
                 rutina.contarPorIntensidad(4) + "</center></html>");
 
+        // Bucle para configurar las JLabel del mismo estilo y evitar repetir.
         for (JLabel lb : new JLabel[]{
                 lbCantFuerza, lbCantCardio, lbCantBasico,
                 lbCantInter, lbCantAvanz, lbCantAltoRend }) {
@@ -105,19 +119,23 @@ public class VentanaResumen {
         btSalir.setFocusPainted(false);
     }
 
+    /// Utiliza GridBagConstraints para componer el GridBagLayout principal.
     public void componerLayout() {
+        // Se reutiliza gbc para acomodar todos los elementos.
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.insets = new Insets(5, 5, 5, 5);
-
+        // Fila 0
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 4;
+        gbc.insets = new Insets(5, 5, 5, 5);
         lbFondo.add(lbResumen, gbc);
 
+        // Fila 1
         gbc.gridy = 1;
         lbFondo.add(lbCliente, gbc);
 
+        // Fila 2
         gbc.gridx = 0;
         gbc.gridy = 2;
         gbc.gridwidth = 2;
@@ -128,26 +146,33 @@ public class VentanaResumen {
         gbc.gridy = 2;
         lbFondo.add(lbTiempoTotal, gbc);
 
+        // Fila 3
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         gbc.insets = new Insets(5, 5, 5, 5);
         lbFondo.add(lbCantFuerza, gbc);
+
         gbc.gridx = 2;
         lbFondo.add(lbCantCardio, gbc);
 
+        // Fila 4
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
         gbc.fill = GridBagConstraints.NONE;
         lbFondo.add(lbCantBasico, gbc);
+
         gbc.gridx = 1;
         lbFondo.add(lbCantInter, gbc);
+
         gbc.gridx = 2;
         lbFondo.add(lbCantAvanz, gbc);
+
         gbc.gridx = 3;
         lbFondo.add(lbCantAltoRend, gbc);
 
+        // Fila 5
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridwidth = 4;
@@ -155,7 +180,7 @@ public class VentanaResumen {
         gbc.insets = new Insets(20, 5, 5, 5);
         lbFondo.add(btGuardar, gbc);
 
-        gbc.gridx = 0;
+        // Fila 6
         gbc.gridy = 6;
         gbc.gridwidth = 2;
         gbc.insets = new Insets(5, 5, 5, 5);
@@ -165,12 +190,15 @@ public class VentanaResumen {
         lbFondo.add(btSalir, gbc);
     }
 
+    /// Configura los Listeners de los elementos de la ventana.
     public void setActionListeners() {
+        // Vuelve a crear la ventana principal y cierra la ventana actual.
         btVolverMenu.addActionListener(e -> {
             VentanaPrincipal principal = new VentanaPrincipal(gestor);
             ventanaResumen.dispose();
         });
 
+        // Acciona la descarga de la rutina mediante el gestor y muestra un mensaje acorde al resultado.
         btGuardar.addActionListener(e -> {
             boolean exito = gestor.descargarRutina(rutina, ventanaResumen);
             if (exito) {
@@ -186,6 +214,7 @@ public class VentanaResumen {
             }
         });
 
+        // Cierra completamente el programa
         btSalir.addActionListener(e -> {
            System.exit(0);
         });

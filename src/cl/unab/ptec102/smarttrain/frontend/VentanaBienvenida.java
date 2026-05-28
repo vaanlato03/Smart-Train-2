@@ -5,16 +5,18 @@ import cl.unab.ptec102.smarttrain.backend.GestorRutinas;
 import javax.swing.*;
 import java.awt.*;
 
+/// Ventana de bienvenida. Se abre al iniciar el programa y solicita el nombre del cliente.
 public class VentanaBienvenida {
 
+    // Elementos de la ventana
     private JFrame ventanaBienvenida;
     private JLabel lbFondo, lbLogo, lbBienvenido, lbIngresar, lbCliente, lbMensaje;
     private JTextField tfCliente;
     private JButton btCargar;
 
-    String cliente;
-
+    // Constructor
     public VentanaBienvenida() {
+        // Inicializa y configura el JFrame.
         ventanaBienvenida = new JFrame();
         ventanaBienvenida.setSize(600,400);
         ventanaBienvenida.setTitle("Bienvenido");
@@ -31,6 +33,7 @@ public class VentanaBienvenida {
         ventanaBienvenida.setLocationRelativeTo(null);
     }
 
+    /// Inicializa los componentes que tendrá la ventana y los estiliza.
     public void crearComponentes() {
         lbFondo = new JLabel(Estilos.fondoMancuernas);
         lbFondo.setLayout(new GridBagLayout());
@@ -69,38 +72,39 @@ public class VentanaBienvenida {
         btCargar.setFocusPainted(false);
     }
 
+    /// Utiliza GridBagConstraints para componer el GridBagLayout principal.
     public void componerLayout() {
+        // Se reutiliza gbc para acomodar todos los elementos.
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.insets = new Insets(10, 10, 10, 10);
-
+        // Fila 0
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
         lbFondo.add(lbLogo, gbc);
 
-        gbc.gridx = 0;
+        // Fila 1
         gbc.gridy = 1;
-        gbc.gridwidth = 2;
         lbFondo.add(lbBienvenido, gbc);
 
-        gbc.gridx = 0;
+        // Fila 2
         gbc.gridy = 2;
-        gbc.gridwidth = 2;
         lbFondo.add(lbIngresar, gbc);
 
+        // Fila 3
         gbc.gridx = 0;
         gbc.gridy = 3;
-        gbc.gridwidth = 2;
         gbc.insets = new Insets(0,10,0,10);
         gbc.anchor = GridBagConstraints.WEST;
         lbFondo.add(lbMensaje, gbc);
 
-        gbc.insets = new Insets(10,10,10,10);
-        gbc.anchor = GridBagConstraints.CENTER;
+        // Fila 4
         gbc.gridx = 0;
         gbc.gridy = 4;
         gbc.gridwidth = 1;
+        gbc.insets = new Insets(10,10,10,10);
+        gbc.anchor = GridBagConstraints.CENTER;
         lbFondo.add(lbCliente, gbc);
 
         gbc.gridx = 1;
@@ -108,6 +112,7 @@ public class VentanaBienvenida {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         lbFondo.add(tfCliente, gbc);
 
+        // Fila 5
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.gridwidth = 2;
@@ -115,17 +120,20 @@ public class VentanaBienvenida {
         lbFondo.add(btCargar, gbc);
     }
 
+    /// Configura los Listeners de los elementos de la ventana.
     public void setActionListeners() {
+        // Si el nombre del cliente es válido crea la siguiente ventana y cierra la ventana actual.
         btCargar.addActionListener(e -> {
-            cliente = tfCliente.getText().trim();
+            String cliente = tfCliente.getText().trim();
             if (!cliente.isBlank() && cliente.length()<30) {
-                VentanaCarga carga = new VentanaCarga(new GestorRutinas(cliente));
+                VentanaCarga carga = new VentanaCarga(new GestorRutinas(cliente)); // Aquí se crea el gestor.
                 ventanaBienvenida.dispose();
             } else {
                 lbMensaje.setText("El campo no puede estar vacío ni contener más de 30 caracteres.");
             }
         });
 
+        // Como evento adicional, al presionar Enter desde el TextField, simula un clic en el botón Cargar.
         tfCliente.addActionListener(e -> {
             btCargar.doClick();
         });

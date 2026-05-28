@@ -24,6 +24,8 @@ public class GestorRutinas {
     public String getCliente() { return this.cliente; }
     public int getNumEjercicios() { return this.ejercicios.size(); }
 
+    // Otros métodos
+    /// Calcula la suma, en minutos, de la duración de todos los ejercicios cargados.
     public int calcularTiempoTotal() {
         int tiempoTotal = 0;
         for (Ejercicio e : this.ejercicios) {
@@ -32,6 +34,8 @@ public class GestorRutinas {
         return tiempoTotal;
     }
 
+    /// Cuenta la cantidad de ejercicios, del tipo especificado, que hay cargados en el gestor.
+    /// @param tipo 1: Fuerza, 2: Cardio.
     public int contarPorTipo(int tipo) {
         int contador = 0;
         for (Ejercicio e : ejercicios) {
@@ -42,6 +46,8 @@ public class GestorRutinas {
         return contador;
     }
 
+    /// Cuenta la cantidad de ejercicios, de la intensidad especificada, que hay cardados en el gestor.
+    /// @param inten 1: Básico, 2: Intermedio, 3: Avanzado, 4: Alto Rendimiento.
     public int contarPorInten(int inten) {
         int contador = 0;
         for (Ejercicio e : ejercicios) {
@@ -52,6 +58,10 @@ public class GestorRutinas {
         return contador;
     }
 
+    /// Cuenta la cantidad de ejercicios que coincidan con el tipo y la intensidad especificados,
+    /// que no hayan sido utilizados la semana pasada.
+    /// @param tipo 1: Fuerza, 2: Cardio.
+    /// @param intensidad 1: Básico, 2: Intermedio, 3: Avanzado, 4: Alto Rendimiento.
     public int cantTipoPorIntenRestringido(int intensidad, int tipo) {
         int contador = 0;
         for (Ejercicio e : ejercicios) {
@@ -62,6 +72,7 @@ public class GestorRutinas {
         return contador;
     }
 
+    /// Agrega un ejercicio a la lista del gestor, dependiendo de su tipo.
     public void agregarEjercicio(int cod, String nom, int tipo, int inten, int semana, int tiempo, String desc) {
         Ejercicio nuevo;
         if (tipo == 1) {
@@ -72,6 +83,9 @@ public class GestorRutinas {
         this.ejercicios.add(nuevo);
     }
 
+    /// Carga los ejercicios desde un archivo csv con el formato:
+    /// código,nombre,tipo,intensidad,ultimaSemana,tiempoMinutos,descripción
+    /// @return 0: carga exitosa, 1: archivo no encontrado, 2: dato numérico incorrecto, 3: otra excepción.
     public int cargarEjercicios() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader("Ejercicios400.csv"));
@@ -113,11 +127,14 @@ public class GestorRutinas {
         }
     }
 
+    /// Genera una rutina en función de la intensidad y la cantidad de cada tipo de ejercicio que se entregue.
+    /// @return true: generación exitosa, false: no se pudo generar.
     public boolean generarRutina(int cantFuerza, int cantCardio, int intensidad) {
         try {
             ArrayList<Ejercicio> candidatosFuerza = new ArrayList<>();
             ArrayList<Ejercicio> candidatosCardio = new ArrayList<>();
 
+            // Obtiene los ejercicios que coincidan con la intensidad y no se hayan realizado la semana pasada.
             for (Ejercicio e : this.ejercicios) {
                 if (e.getIntensidad() == intensidad && e.getUltimaSemana() != 1) {
                     if (e.getTipo() == 1) {
@@ -128,6 +145,7 @@ public class GestorRutinas {
                 }
             }
 
+            // Lanza excepciones si no hay suficientes ejercicios de algún tipo.
             if (candidatosFuerza.size() < cantFuerza) {
                 throw new Exception(
                         "No hay suficientes ejercicios de Fuerza disponibles.\n"
@@ -144,18 +162,21 @@ public class GestorRutinas {
             Rutina nuevaRutina = new Rutina(this.cliente, intensidad);
             Random rnd = new Random();
 
+            // Selección aleatoria sin repetir desde los candidatos para Fuerza
             for (int i = 0; i < cantFuerza; i++) {
                 int index = rnd.nextInt(candidatosFuerza.size());
                 nuevaRutina.agregarEjercicio(candidatosFuerza.get(index));
                 candidatosFuerza.remove(index);
             }
 
+            // Selección aleatoria sin repetir desde los candidatos para Cardio
             for (int i = 0; i < cantCardio; i++) {
                 int index = rnd.nextInt(candidatosCardio.size());
                 nuevaRutina.agregarEjercicio(candidatosCardio.get(index));
                 candidatosCardio.remove(index);
             }
 
+            // Asigna la rutina creada al atributo rutinaActual
             this.rutinaActual = nuevaRutina;
             return true;
 
@@ -164,6 +185,8 @@ public class GestorRutinas {
         }
     }
 
+    /// Escribe la rutina en un archivo .txt (nombrado y guardado por el usuario).
+    /// @return true: escritura exitosa, false: no se escribió correctamente o el usuario canceló.
     public boolean descargarRutina(Rutina rutina, JFrame ventana) {
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setSelectedFile(new File("rutina_" + rutina.getCliente() + ".txt"));

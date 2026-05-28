@@ -5,10 +5,17 @@ import cl.unab.ptec102.smarttrain.backend.GestorRutinas;
 import javax.swing.*;
 import java.awt.*;
 
+/// Ventana de generación de la rutina. Esta ventana utiliza un
+/// JDialog para comportarse de manera modal con la Ventana Principal
 public class VentanaGenerarRutina {
 
+    // Atributo para recibir el gestor creado anteriormente.
     private GestorRutinas gestor;
+
+    // Atributo para recibir la ventana principal.
     private VentanaPrincipal padre;
+
+    // Elementos de la ventana
     private JDialog ventanaGenerarRutina;
     private JPanel panelGenerarRutina;
     private JLabel lbGenera, lbIngresar, lbIntensidad, lbFuerza, lbFuerzaDisp, lbCardio, lbCardioDisp;
@@ -17,8 +24,11 @@ public class VentanaGenerarRutina {
     private JButton btGenerar, btCancelar;
 
     public VentanaGenerarRutina(GestorRutinas gestor, VentanaPrincipal padre) {
+        // Recibe el gestor y la ventana principal y los almacena en sus atributos.
         this.gestor = gestor;
         this.padre = padre;
+
+        // Inicializa y configura el JDialog, con el JFrame de la ventana principal como padre.
         ventanaGenerarRutina = new JDialog(padre.getFrame(), true);
         ventanaGenerarRutina.setSize(500, 400);
         ventanaGenerarRutina.setTitle("Generar Rutina");
@@ -35,6 +45,7 @@ public class VentanaGenerarRutina {
         ventanaGenerarRutina.setVisible(true);
     }
 
+    /// Inicializa los componentes que tendrá la ventana y los estiliza.
     public void crearComponentes() {
         panelGenerarRutina = new JPanel(new GridBagLayout());
         panelGenerarRutina.setFont(Estilos.fuente);
@@ -106,20 +117,23 @@ public class VentanaGenerarRutina {
         btCancelar.setFocusPainted(false);
     }
 
+    /// Utiliza GridBagConstraints para componer el GridBagLayout principal.
     public void componerLayout() {
+        // Se reutiliza gbc para acomodar todos los elementos.
         GridBagConstraints gbc = new GridBagConstraints();
 
-        gbc.insets = new Insets(10, 10, 10, 10);
-
+        // Fila 0
         gbc.gridx = 0;
         gbc.gridy = 0;
         gbc.gridwidth = 2;
+        gbc.insets = new Insets(10, 10, 10, 10);
         panelGenerarRutina.add(lbGenera, gbc);
 
+        // Fila 1
         gbc.gridy = 1;
         panelGenerarRutina.add(lbIngresar, gbc);
 
-        gbc.gridx = 0;
+        // Fila 2
         gbc.gridy = 2;
         gbc.gridwidth = 1;
         gbc.anchor = GridBagConstraints.WEST;
@@ -129,6 +143,7 @@ public class VentanaGenerarRutina {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panelGenerarRutina.add(cbIntensidades, gbc);
 
+        // Fila 3
         gbc.gridx = 0;
         gbc.gridy = 3;
         gbc.fill = GridBagConstraints.NONE;
@@ -138,12 +153,14 @@ public class VentanaGenerarRutina {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panelGenerarRutina.add(cantFuerza, gbc);
 
+        // Fila 4
         gbc.gridx = 1;
         gbc.gridy = 4;
         gbc.fill = GridBagConstraints.NONE;
         gbc.insets = new Insets(0, 10, 10, 10);
         panelGenerarRutina.add(lbFuerzaDisp, gbc);
 
+        // Fila 5
         gbc.gridx = 0;
         gbc.gridy = 5;
         gbc.insets = new Insets(10, 10, 10, 10);
@@ -153,25 +170,31 @@ public class VentanaGenerarRutina {
         gbc.fill = GridBagConstraints.HORIZONTAL;
         panelGenerarRutina.add(cantCardio, gbc);
 
+        // Fila 6
         gbc.gridx = 1;
         gbc.gridy = 6;
         gbc.fill = GridBagConstraints.NONE;
         gbc.insets = new Insets(0, 10, 10, 10);
         panelGenerarRutina.add(lbCardioDisp, gbc);
 
+        // Fila 7
         gbc.gridx = 0;
         gbc.gridy = 7;
-        gbc.anchor = GridBagConstraints.CENTER;
         gbc.insets = new Insets(10, 10, 10, 10);
+        gbc.anchor = GridBagConstraints.CENTER;
         panelGenerarRutina.add(btCancelar, gbc);
 
         gbc.gridx = 1;
         panelGenerarRutina.add(btGenerar, gbc);
     }
 
+    /// Configura los Listeners de los elementos de la ventana.
     public void setActionListeners() {
+        // Botón Cancelar cierra la ventana actual (modal), volviendo a la ventana principal.
         btCancelar.addActionListener(e -> ventanaGenerarRutina.dispose());
 
+        // Al seleccionar una intensidad válida se habilitan los spinners
+        // y el botón Generar, en caso contrario se deshabilitan.
         cbIntensidades.addActionListener(e -> {
            int intensidad = cbIntensidades.getSelectedIndex();
            if (intensidad != 0) {
@@ -183,13 +206,17 @@ public class VentanaGenerarRutina {
            }
         });
 
-        cantFuerza.addChangeListener(e -> habilitarBtGenerar());
-
-        cantCardio.addChangeListener(e -> habilitarBtGenerar());
-
+        // Al presionar el botón generar, acciona la generación de la rutina.
         btGenerar.addActionListener(e -> generarRutina());
+
+        // (ChangeListener) Al cambiar de valor, verifican si se debe habilitar el botón Generar.
+        cantFuerza.addChangeListener(e -> habilitarBtGenerar());
+        cantCardio.addChangeListener(e -> habilitarBtGenerar());
     }
 
+    /// Habilita los spinner cantFuerza y cantCardio, y adapta el modelo y el texto
+    /// en función de los ejercicios disponibles dada la intensidad.
+    /// @param intensidad intensidad de los ejercicios que estarán disponibles.
     public void habilitarSpinners(int intensidad) {
         lbFuerzaDisp.setText("(!) Disponibles para ti: " + gestor.cantTipoPorIntenRestringido(intensidad, 1));
         cantFuerza.setEnabled(true);
@@ -202,6 +229,7 @@ public class VentanaGenerarRutina {
                 gestor.cantTipoPorIntenRestringido(intensidad, 2), 1));
     }
 
+    /// Deshabilita los spinner cantFuerza y cantCardio, y restaura los textos.
     public void deshabilitarSpinners() {
         cantFuerza.setEnabled(false);
         cantCardio.setEnabled(false);
@@ -209,9 +237,12 @@ public class VentanaGenerarRutina {
         lbCardioDisp.setText("(!) Disponibles para ti: ---");
     }
 
+    /// Verifica si se debe habilitar o no el botón Generar, dependiendo de
+    /// si un spinner habilitado tiene un valor mayor a 0.
     public void habilitarBtGenerar() {
-        int valorFuerza = (int)cantFuerza.getValue();
-        int valorCardio = (int)cantCardio.getValue();
+        int valorFuerza = (cantFuerza.isEnabled()) ? (int)cantFuerza.getValue() : 0;
+        int valorCardio = (cantCardio.isEnabled()) ? (int)cantCardio.getValue() : 0;
+
         if (valorFuerza > 0 || valorCardio > 0) {
             btGenerar.setBackground(Estilos.colorMedio);
             btGenerar.setEnabled(true);
@@ -221,14 +252,16 @@ public class VentanaGenerarRutina {
         }
     }
 
+    /// Recolecta los valores y utiliza al gestor para generar la rutina, espera el resultado
+    /// y, continua con la siguiente ventana, o muestra un mensaje de error.
     public void generarRutina() {
         int valorFuerza = (int)cantFuerza.getValue();
         int valorCardio = (int)cantCardio.getValue();
         int intensidad = cbIntensidades.getSelectedIndex();
         boolean exito = gestor.generarRutina(valorFuerza, valorCardio, intensidad);
         if (exito) {
-            VentanaRevision revision = new VentanaRevision(gestor);
-            this.padre.cerrarVentana();
+            VentanaRevision revision = new VentanaRevision(gestor); // Crea la ventana y pasa el gestor.
+            this.padre.cerrarVentana(); // Utiliza cerrarVentana() de VentanaPrincipal para cerrarla.
             ventanaGenerarRutina.dispose();
         } else {
             JOptionPane.showMessageDialog(null,

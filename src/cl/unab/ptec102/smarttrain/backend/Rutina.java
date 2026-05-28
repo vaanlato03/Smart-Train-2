@@ -32,14 +32,20 @@ public class Rutina {
         };
     }
 
+    // Otros métodos
+    /// Agrega un ejercicio al arreglo de ejercicios de la rutina.
+    /// @param e ejercicio a agregar.
     public void agregarEjercicio(Ejercicio e) {
         this.ejercicios.add(e);
     }
 
+    /// Elimina un ejercicio, por su índice, del arreglo de ejercicios de la rutina.
+    /// @param indice índice del ejercicio a eliminar.
     public void eliminarEjercicio(int indice) {
         this.ejercicios.remove(indice);
     }
 
+    /// Calcula la suma, en minutos, de la duración de todos los ejercicios de la rutina.
     public int calcularTiempoTotal() {
         int total = 0;
         for (Ejercicio e : this.ejercicios) {
@@ -48,6 +54,8 @@ public class Rutina {
         return total;
     }
 
+    /// Recibe un tipo de ejercicio y cuenta la cantidad de ejercicios de ese tipo en la rutina.
+    /// @param tipo 1: Fuerza, 2: Cardio.
     public int contarPorTipo(int tipo) {
         int count = 0;
         for (Ejercicio e : this.ejercicios) {
@@ -56,6 +64,8 @@ public class Rutina {
         return count;
     }
 
+    /// Recibe una intensidad de ejercicio y cuenta la cantidad de ejercicios con esa intensidad en la rutina.
+    /// @param intensidad 1: Básico, 2: Intermedio, 3: Avanzado, 4: Alto Rendimiento.
     public int contarPorIntensidad(int intensidad) {
         int count = 0;
         for (Ejercicio e : this.ejercicios) {
@@ -64,6 +74,7 @@ public class Rutina {
         return count;
     }
 
+    /// Genera un String con la información de la rutina y el listado de cada ejercicio.
     public String mostrarRutina() {
         StringBuilder sb = new StringBuilder();
         sb.append(Estilos.lineaDecorativa);
